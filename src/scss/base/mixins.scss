@@ -23,21 +23,6 @@
     $result: math.div($px, $current) + em;
     @return $result;
 }
-//Адаптивное свойство
-
-//Currency
-@mixin currency($sym) {
-    &::after {
-        content: "#{$sym}";
-    }
-}
-
-// Grids
-@mixin gridCards($type: fit, $min: 280px, $max: 1fr, $gap: 30px) {
-    display: grid;
-    gap: $gap;
-    grid-template-columns: repeat(auto-#{$type}, minmax($min, $max));
-}
 
 // Адаптивное свойство (clamp)
 @mixin adaptiveValue($property, $startSize, $minSize, $widthFrom: $containerWidth, $widthTo: $minWidth, $keepSize: 0) {
@@ -131,6 +116,7 @@
     &::-webkit-scrollbar-thumb {
         background: $foreground-color;
         overflow: hidden;
+        border-radius: rem(6);
     }
 
     &::-webkit-scrollbar-track {

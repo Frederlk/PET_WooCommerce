@@ -60,6 +60,7 @@ $responsiveType: 1;
 
 body {
     background-color: $white;
+    @include scrollbars(rem(8), $dark, $white);
     // Скролл заблокирован
     .lock & {
         overflow: hidden;
@@ -67,41 +68,34 @@ body {
     }
     // Сайт загружен
     .loaded & {
-        .header__wrapper {
-            @extend .anim;
+        .header {
+            @extend %anim;
             transform: translate(0px, 0px);
         }
         .page {
-            @extend .anim;
+            @extend %anim;
         }
         .content-home__buttons,
         .content-home__text,
         .content-home__title {
-            @extend .anim;
+            @extend %anim;
             transform: translate(0px, 0px);
         }
         .images-home__item,
         .images-home__dots,
-        .images-home__body {
-            @extend .anim;
+        .images-home {
+            @extend %anim;
         }
         .images-home__image_2 {
-            @extend .anim;
+            @extend %anim;
             transform: translate(0px, 0px);
-        }
-    }
-    &._scroll {
-        .header__wrapper {
-            margin-top: 0px;
-            padding: 10px 0px;
-            box-shadow: 0 0 15px $white;
-            background-color: $white;
         }
     }
 }
 
 // Оболочка ============================================================================================================================================================================================================================================================================================================================================================================================================================================
 .wrapper {
+    position: relative;
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -144,17 +138,17 @@ body {
 //========================================================================================================================================================
 
 .page {
-    @extend .no-anim;
-    transition: all 0.3s ease 0s;
     position: relative;
+    @extend %no-anim;
+    transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s;
     &__home {
     }
     &__simple {
-        @include adaptiv-value("padding-top", 65, 60, 1);
+        @include adaptiveValue("padding-top", 65, 60);
     }
     &__doc {
-        @include adaptiv-value("padding-top", 165, 60, 1);
-        @include adaptiv-value("padding-bottom", 100, 20, 1);
+        @include adaptiveValue("padding-top", 165, 60);
+        @include adaptiveValue("padding-bottom", 100, 20);
     }
     &__testi {
     }

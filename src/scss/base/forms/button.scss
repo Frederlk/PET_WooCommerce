@@ -3,12 +3,12 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 5px 10px;
-    border-radius: 5px;
-    @extend .text;
+    padding: rem(5) rem(10);
+    border-radius: rem(5);
+    @extend %text;
     background-color: $purple;
     color: $white;
-    transition: all 0.3s ease 0s;
+    transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
     @media (any-hover: hover) {
         &:hover {
             background-color: $green;
@@ -16,7 +16,7 @@
     }
     &_green {
         background-color: $green;
-        border-radius: 60px;
+        border-radius: rem(60);
         @media (any-hover: hover) {
             &:hover {
                 color: $purple;

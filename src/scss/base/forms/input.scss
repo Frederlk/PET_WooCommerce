@@ -1,5 +1,3 @@
-//<INPUT>
-// Снипет (HTML): inp
 input[type="text"],
 input[type="email"],
 input[type="tel"],
@@ -10,19 +8,19 @@ textarea {
 }
 .input {
     width: 100%;
-    min-height: 47px;
+    min-height: rem(47);
     background-color: $white;
-    padding: 0px 10px;
-    @extend .text;
+    padding: 0px rem(10);
+    @extend %text;
     color: $grey;
-    transition: all 0.3s ease 0s;
-    border-radius: 5px;
-    border: 1px solid $grey;
-    &._focus {
+    transition: color 0.3s ease 0s, border 0.3s ease 0s;
+    border-radius: rem(5);
+    border: rem(1) solid $grey;
+    &._form-focus {
         color: $dark;
-        border: 1px solid $dark;
+        border: rem(1) solid $dark;
     }
-    &._error {
-        border: 1px solid $red;
+    &._form-error {
+        border: rem(1) solid $red;
     }
 }

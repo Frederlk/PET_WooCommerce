@@ -1,17 +1,17 @@
 .footer {
+    position: relative;
+    z-index: 4;
     &__wrapper {
         background-color: $purple;
     }
 
     &__container {
     }
-    &__top {
-        @media (min-width: $md1+px) {
-            padding: 0px 60px;
-        }
-    }
 
     &__body {
+        @media (min-width: $pc) {
+            padding: 0px rem(60);
+        }
     }
 
     &__menu {
@@ -21,22 +21,25 @@
         background-color: $white;
     }
 }
-.body-footer {
-    @include adaptiv-value("padding-top", 45, 30, 1);
-    @include adaptiv-value("padding-bottom", 55, 30, 1);
-    border-bottom: 1px solid #9a7dff;
 
+.body-footer {
+    @include adaptiveValue("padding-top", 45, 30);
+    @include adaptiveValue("padding-bottom", 55, 30);
+    max-width: rem(1480);
+    margin: 0px auto;
     &__flex {
         display: flex;
         align-items: center;
         justify-content: center;
-        @include adaptiv-value("margin-bottom", 135, 40, 1);
-        @media (max-width: $md1+px) {
+        @include adaptiveValue("margin-bottom", 135, 40);
+        @include adaptiveValue("gap", 120, 30, 1600, 1300, 1);
+        @media (max-width: $pc) {
             justify-content: space-between;
         }
-        @media (max-width: $md3+px) {
+        @media (max-width: $mobile) {
+            margin-bottom: rem(30);
+            gap: rem(20);
             flex-wrap: wrap;
-            margin-bottom: 30px;
         }
     }
 
@@ -44,41 +47,30 @@
         display: flex;
         align-items: center;
         color: $white;
-        @media (max-width: 1300px) {
-            align-items: flex-start;
+        @media (max-width: em(1300)) {
             flex: 0 1 33.333%;
-        }
-        @media (max-width: $md3+px) {
-            flex: 1 1 100%;
             justify-content: center;
         }
-        @media (max-width: 330px) {
+        @media (max-width: $mobile) {
+            flex: 1 1 100%;
+        }
+        @media (max-width: em(330)) {
             justify-content: flex-start;
         }
         &::before {
-            @include adaptiv-font(40, 30, 1);
-            @include adaptiv-value("margin-right", 15, 10, 1);
-        }
-        &:not(:last-child) {
-            margin-right: 10px;
-            @media (min-width: $md1+px) {
-                @include adaptiv-value("margin-right", 120, 0, 1);
-            }
-            @media (max-width: $md3+px) {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
+            @include adaptiveValue("font-size", 40, 30);
+            @include adaptiveValue("margin-right", 15, 10);
         }
     }
 
     &__text {
-        font-size: 20px;
-        line-height: 52 / 20 * 100%;
-        @media (max-width: 1300px) {
-            line-height: 28 / 20 * 100%;
+        font-size: rem(20);
+        line-height: math.div(52, 20);
+        @media (max-width: em(1300)) {
+            line-height: math.div(28, 20);
         }
-        @media (max-width: $md3+px) {
-            font-size: 18px;
+        @media (max-width: $mobile) {
+            font-size: rem(18);
         }
     }
 
@@ -89,56 +81,61 @@
         }
     }
 }
+
 .menu-footer {
-    @include adaptiv-value("padding-top", 35, 20, 1);
-    @include adaptiv-value("padding-bottom", 65, 20, 1);
-    &__flex {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: flex-start;
-        @media (max-width: $md2+px) {
-            justify-content: space-between;
-            margin: 0px -10px;
-        }
-        @media (max-width: $md3+px) {
-            justify-content: flex-start;
-            flex-wrap: wrap;
-        }
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    gap: rem(20);
+    max-width: rem(1480);
+    margin: 0px auto;
+    @include adaptiveValue("padding-top", 35, 20);
+    @include adaptiveValue("padding-bottom", 65, 20);
+    border-top: rem(1) solid #9a7dff;
+    @media (max-width: $tablet) {
+        justify-content: space-between;
+    }
+    @media (max-width: $mobile) {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: rem(5);
     }
 
     &__column {
-        @media (max-width: $md3+px) {
+        @media (max-width: $mobile) {
             flex: 1 1 100%;
         }
-        padding: 0px 10px;
     }
 
     &__label {
         font-weight: 700;
-        font-size: 14px;
-        line-height: 52 / 14 * 100%;
+        font-size: rem(14);
+        line-height: math.div(52, 14);
         text-transform: uppercase;
         color: $white;
         display: flex;
         align-items: center;
+        transition: color 0.3s ease 0s;
         justify-content: space-between;
         &::after {
             display: none;
-            transition: all 0.5s ease 0s;
+            transition: transform 0.5s ease 0s;
         }
-        @media (max-width: $md3+px) {
-            @media (any-hover: hover) {
-                &:hover {
-                    color: $grey;
-                }
-            }
+        @media (max-width: $mobile) {
+            font-size: rem(16);
+            line-height: math.div(40, 16);
+            transition: color 0.5s ease 0s;
             &::after {
                 display: block;
             }
-            font-size: 16px;
-            line-height: 40 / 16 * 100%;
+            @media (any-hover: hover) {
+                &:hover {
+                    color: $orange;
+                }
+            }
         }
-        &._active {
+        &._spoller-active {
+            color: $orange;
             &::after {
                 transform: rotate(-180deg);
             }
@@ -149,87 +146,68 @@
     }
 
     &__link {
-        font-size: 12px;
-        line-height: 22 / 12 * 100%;
-        @media (max-width: $md3+px) {
-            font-size: 14px;
-        }
+        font-size: rem(12);
+        line-height: math.div(22, 12);
         color: $white;
-        transition: all 0.3s ease 0s;
+        transition: color 0.3s ease 0s;
         @media (any-hover: hover) {
             &:hover {
                 color: $grey;
             }
         }
+        @media (max-width: $mobile) {
+            font-size: rem(14);
+        }
     }
 }
-.bottom-footer {
-    padding: 20px 0px;
-    @media (min-width: $md1+px) {
-        padding: 20px 60px;
-    }
-    @media (max-width: $md2+px) {
-        padding-top: 20px;
-        padding-bottom: 10px;
-    }
-    &__container {
-    }
 
-    &__flex {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        @media (max-width: $md2+px) {
-            flex-wrap: wrap;
-        }
+.bottom-footer {
+    max-width: rem(1510);
+    margin: 0px auto;
+    padding: rem(20) rem(15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: $tablet) {
+        flex-wrap: wrap;
+        padding-top: rem(20);
+        padding-bottom: rem(10);
     }
 
     &__social {
         display: flex;
         align-items: center;
-        flex: 0 1 250px;
+        @include adaptiveValue("gap", 25, 15);
+        flex: 0 1 rem(250);
         justify-content: space-between;
-        @media (max-width: 1300px) {
-            flex: 0 1 200px;
+        @media (max-width: em(1300)) {
+            flex: 0 1 rem(200);
         }
-        @media (max-width: $md4+px) {
+        @media (max-width: $mobileSmall) {
             flex: 1 1 100%;
             justify-content: center;
         }
     }
 
     &__item-social {
-        font-size: 20px;
-        transition: all 0.3s ease 0s;
-        color: $dark;
-        &:not(:last-child) {
-            @include adaptiv-value("margin-right", 20, 10, 1);
-        }
+        font-size: rem(20);
+        transition: color 0.3s ease 0s;
         @media (any-hover: hover) {
             &:hover {
                 color: $purple;
             }
         }
-        @media (max-width: $md4+px) {
-            &:not(:last-child) {
-                @include adaptiv-value("margin-right", 25, 15, 1);
-            }
-        }
     }
 
     &__copy {
-        font-size: 12px;
-        line-height: 22 / 12 * 100%;
+        font-size: rem(12);
+        line-height: math.div(22, 12);
         text-align: center;
-        color: $dark;
-        span {
-        }
         a {
             text-decoration: underline;
-            transition: all 0.3s ease 0s;
-            color: $dark;
+            transition: color 0.3s ease 0s;
             &:not(:last-child) {
-                margin: 0px 3px 0px 0px;
+                margin-right: rem(3);
             }
             @media (any-hover: hover) {
                 &:hover {
@@ -237,26 +215,26 @@
                 }
             }
         }
-        @media (max-width: $md2+px) {
+        @media (max-width: $tablet) {
             flex: 1 1 100%;
             order: 3;
-            margin-top: 10px;
+            margin-top: rem(10);
         }
     }
 
     &__company {
-        flex: 0 1 250px;
+        flex: 0 1 rem(250);
         text-align: right;
-        @media (max-width: 1300px) {
-            flex: 0 1 200px;
-        }
-        @media (max-width: $md4+px) {
-            flex: 1 1 100%;
-            text-align: center;
-            margin-top: 20px;
-        }
         img {
             max-width: 100%;
+        }
+        @media (max-width: em(1300)) {
+            flex: 0 1 rem(200);
+        }
+        @media (max-width: $mobileSmall) {
+            flex: 1 1 100%;
+            text-align: center;
+            margin-top: rem(20);
         }
     }
 }

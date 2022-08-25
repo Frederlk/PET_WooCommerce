@@ -1,47 +1,39 @@
-<header class="header">
-    <div class="header__wrapper">
-        <div class="header__container _container _container_big">
-            <div class="header__body">
-                <a href="#" class="header__logo">
-                    <img src="img/logo_h.svg" alt="" />
-                </a>
-                <div class="header__menu menu">
-                    <div class="menu__wrapper">
-                        <nav class="menu__body">
-                            <ul class="menu__list">
-                                <li><a href="" class="menu__link">Sell</a></li>
-                                <li><a href="" class="menu__link">Marketplace</a></li>
-                                <li><a href="" class="menu__link">Community</a></li>
-                                <li><a href="" class="menu__link">Develop</a></li>
-                                <li><a href="" class="menu__link">Resources</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="header__profile" data-da=".menu__body,600,last">
-                    <a href="#" class="header__login">Log In</a>
-                    <a href="#" class="header__sign btn">Get Started</a>
-                    <div class="header__search search-form" data-da=".menu__body,767.98,last">
-                        <button type="button" class="search-form__icon _icon-search"></button>
-                        <form action="#" class="search-form__item">
-                            <button type="submit" class="search-form__btn _icon-search"></button>
-                            <input
-                                autocomplete="off"
-                                type="text"
-                                name="form[]"
-                                data-error="Error"
-                                data-value="What do you search?"
-                                class="search-form__input input"
-                            />
-                        </form>
-                    </div>
-                </div>
-                <div class="header__icon icon-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+<header data-lp class="header">
+    <div class="header__container">
+        <a href="#" class="header__logo">
+            <img src="@img/logo_h.svg" alt="Logo" />
+        </a>
+        <div class="header__menu menu">
+            <div class="menu__wrapper">
+                <nav class="menu__body">
+                    <ul class="menu__list">
+                        <li><a href="#" class="menu__link">Sell</a></li>
+                        <li><a href="#" class="menu__link">Marketplace</a></li>
+                        <li><a href="#" class="menu__link">Community</a></li>
+                        <li><a href="#" class="menu__link">Develop</a></li>
+                        <li><a href="#" class="menu__link">Resources</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
+        <div class="header__profile" data-da=".menu__body,600,last">
+            <a href="#" class="header__login">Log In</a>
+            <a href="#" class="header__sign btn">Get Started</a>
+            <div class="header__search search-form" data-da=".menu__body,767.98,last">
+                <button type="button" class="search-form__icon _icon-search"></button>
+                <form action="#" data-dev class="search-form__item">
+                    <button type="submit" class="search-form__btn _icon-search"></button>
+                    <input
+                        autocomplete="off"
+                        type="text"
+                        name="search"
+                        data-error="Error"
+                        placeholder="What do you search?"
+                        class="search-form__input input"
+                    />
+                </form>
+            </div>
+        </div>
+        <button type="button" class="header__icon icon-menu"><span></span></button>
     </div>
 </header>

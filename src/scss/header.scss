@@ -1,45 +1,42 @@
-//====================================================================================================
-//====================================================================================================
 .header {
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    &__wrapper {
-        margin-top: 37px;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        left: 0;
-        z-index: 100;
-        background-color: transparent;
-        box-shadow: 0 0 15px transparent;
-        transition: all 0.8s ease 0s;
-        @media (max-width: $md2+px) {
-            margin-top: 10px;
-        }
-        transform: translate(0px, -100px);
-        @extend .no-anim;
+    z-index: 100;
+    background-color: transparent;
+    box-shadow: 0 0 rem(15) transparent;
+    @media (min-width: $tablet) {
+        margin-top: rem(27);
     }
+    &._header-scroll {
+        margin-top: 0px;
+        box-shadow: 0 0 rem(15) $white;
+        background-color: $white;
+    }
+
+    // ANIMATION =======================================================================================================================================
+    transform: translate(0px, rem(-100));
+    @extend %no-anim;
+    transition: background-color 0.8s ease 0s, box-shadow 0.8s ease 0s, margin-top 0.8s ease 0s, opacity 0.8s ease 0s,
+        visibility 0.8s ease 0s, transform 0.8s ease 0s;
 
     &__container {
-        padding: 0px 55px;
-        @media (max-width: $md1+px) {
-            padding: 0px 15px;
-        }
-    }
-
-    &__body {
-        min-height: 47px;
+        min-height: rem(67);
         display: flex;
         align-items: center;
+        max-width: rem(1920);
+        padding: 0px rem(55);
+        @media (max-width: $pc) {
+            padding: 0px rem(15);
+        }
     }
 
     &__logo {
-        flex: 0 0 170px;
+        flex: 0 0 rem(170);
         position: relative;
         z-index: 20;
-        @include adaptiv-value("margin-right", 145, -40, 1);
+        @include adaptiveValue("margin-right", 145, -40);
         img {
             max-width: 100%;
         }
@@ -52,41 +49,42 @@
     &__profile {
         display: flex;
         align-items: center;
-        @media (max-width: 600px) {
-            @include adaptiv-value("margin-top", 30, 20, 1);
+        @include adaptiveValue("gap", 38, 20);
+        @media (max-width: em(600)) {
+            @include adaptiveValue("margin-top", 30, 20);
             flex-wrap: wrap;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
         }
     }
 
     &__login {
-        @extend .text;
-        color: $dark;
-        transition: all 0.3s ease 0s;
-        @include adaptiv-value("margin-right", 38, 20, 1);
+        @extend %text;
+        position: relative;
+        z-index: 20;
+        transition: color 0.3s ease 0s;
         @media (any-hover: hover) {
             &:hover {
                 color: $darkPurple;
             }
         }
-        position: relative;
-        z-index: 20;
     }
 
     &__sign {
-        min-height: 47px;
-        min-width: 120px;
+        min-height: rem(47);
+        min-width: rem(120);
         position: relative;
         z-index: 20;
     }
 
     &__search {
-        @media (min-width: $md3+px) {
-            @include adaptiv-value("margin-left", 30, 20, 1);
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-left", 30, 20);
         }
-        @media (max-width: $md3+px) {
-            @include adaptiv-value("margin-top", 30, 20, 1);
+        @media (max-width: $mobile) {
+            @include adaptiveValue("margin-top", 30, 20);
         }
-        @media (max-width: 600px) {
+        @media (max-width: em(600)) {
             flex: 1 1 100%;
         }
     }
@@ -94,35 +92,35 @@
     &__icon {
         position: relative;
         z-index: 20;
-        @include adaptiv-value("margin-left", 30, 20, 1);
+        @include adaptiveValue("margin-left", 30, 20);
     }
 }
 .menu {
     &__wrapper {
-        @media (max-width: $md2+px) {
+        @media (max-width: $tablet) {
             position: fixed;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             top: 0;
             left: 0;
             background-color: rgba(255, 255, 255, 0.5);
             opacity: 0;
             visibility: hidden;
-            transition: all 0.8s ease 0s;
+            transition: opacity 0.8s ease 0s, visibility 0.8s ease 0s;
             &::before {
                 content: "";
                 position: fixed;
                 width: 100%;
-                height: 67px;
-                top: 0;
+                height: rem(67);
+                top: rem(-10);
                 left: 0;
                 opacity: 0;
                 visibility: hidden;
                 background-color: $white;
-                transition: all 0.8s ease 0s;
+                transition: opacity 0.8s ease 0s, visibility 0.8s ease 0s;
                 z-index: 15;
             }
-            &._active {
+            .menu-open & {
                 opacity: 1;
                 visibility: visible;
                 &::before {
@@ -134,81 +132,74 @@
     }
 
     &__body {
-        @media (min-width: 600px) {
-            min-width: 350px;
-        }
-        @media (max-width: $md2+px) {
+        @media (max-width: $tablet) {
             position: fixed;
             height: 100%;
+            min-width: rem(350);
+            min-height: rem(320);
             top: 0;
             right: 0;
-            padding: 100px 15px 30px 15px;
+            padding: rem(80) rem(15) rem(20) rem(15);
             background-color: $white;
             z-index: 10;
             overflow: auto;
             opacity: 0;
             visibility: hidden;
             transform: translate(100%, 0px);
-            transition: all 0.8s ease 0s;
-            &._active {
+            transition: opacity 0.8s ease 0s, visibility 0.8s ease 0s, transform 0.8s ease 0s;
+            border-radius: 0 0 0 rem(20);
+            @include scrollbars(rem(8), $dark, $white);
+            .menu-open & {
                 opacity: 1;
                 visibility: visible;
                 transform: translate(0px, 0px);
             }
         }
-        @media (max-width: 600px) {
+        @media (max-width: $mobile) {
+            min-height: rem(370);
+        }
+        @media (max-width: em(600)), (max-height: em(370)) {
             width: 100%;
-            padding-top: 80px;
+            min-width: auto;
+            min-height: 100vh;
+            padding-top: rem(80);
+            border-radius: rem(0);
         }
     }
 
     &__list {
-        @media (min-width: $md2+px) {
+        @media (min-width: $tablet) {
             display: flex;
             align-items: center;
-            li {
-                &:not(:last-child) {
-                    @include adaptiv-value("margin-right", 38, 0, 1);
-                }
-            }
+            @include adaptiveValue("gap", 38, 20, 1600, 991.98, 1);
         }
-        @media (max-width: $md2+px) {
+        @media (max-width: $tablet) {
             li {
                 &:not(:last-child) {
-                    @include adaptiv-value("margin-bottom", 30, 20, 1);
+                    @include adaptiveValue("margin-bottom", 30, 20);
                 }
             }
         }
     }
 
     &__link {
-        @extend .text;
-        color: $dark;
-        transition: all 0.3s ease 0s;
+        @extend %text;
+        transition: color 0.3s ease 0s;
         @media (any-hover: hover) {
             &:hover {
                 color: $darkPurple;
             }
         }
-        @media (max-width: 600px) {
-            font-size: 20px;
+        @media (max-width: em(600)), (max-height: em(370)) {
+            font-size: rem(20);
         }
     }
 }
+
 .search-form {
-    &._active {
-        .search-form__item {
-            @media (min-width: $md3+px) {
-                visibility: visible;
-                opacity: 1;
-                transform: translate(0px, 50px);
-            }
-        }
-    }
     &__icon {
-        font-size: 16px;
-        color: $dark;
-        transition: all 0.3s ease 0s;
+        font-size: rem(16);
+        transition: color 0.3s ease 0s;
         position: relative;
         z-index: 20;
         @media (any-hover: hover) {
@@ -216,37 +207,41 @@
                 color: $darkPurple;
             }
         }
-        @media (max-width: $md3+px) {
+        @media (max-width: $mobile) {
             display: none;
         }
     }
 
     &__item {
-        box-shadow: 0px 18px 52.8537px rgba(215, 228, 249, 0.5);
+        box-shadow: 0px rem(18) rem(53) rgba(215, 228, 249, 0.5);
         display: flex;
         align-items: center;
-        transition: all 0.5s ease 0s;
-        border-radius: 6px;
-        @media (min-width: $md3+px) {
+        transition: opacity 0.5s ease 0s, visibility 0.5s ease 0s, transform 0.5s ease 0s;
+        border-radius: rem(6);
+        ._active & {
+            visibility: visible;
+            opacity: 1;
+            transform: translate(0px, rem(50));
+        }
+        @media (min-width: $mobile) {
             position: absolute;
-            top: 10px;
-            right: 15px;
+            top: rem(30);
+            right: rem(15);
             visibility: hidden;
             opacity: 0;
             transform: translate(0px, 0px);
-            min-height: 47px;
-            min-width: 500px;
+            min-height: rem(47);
+            min-width: rem(500);
         }
     }
 
     &__btn {
-        padding: 0px 10px;
-        font-size: 18px;
+        padding: 0px rem(10);
         color: $white;
         background-color: $purple;
-        min-height: 47px;
-        transition: all 0.3s ease 0s;
-        border-radius: 6px 0px 0px 6px;
+        min-height: rem(47);
+        transition: background-color 0.3s ease 0s;
+        border-radius: rem(6) 0px 0px rem(6);
         @media (any-hover: hover) {
             &:hover {
                 background-color: $green;
@@ -255,105 +250,65 @@
     }
 
     &__input {
-        border-radius: 0 6px 6px 0px;
-    }
-}
-
-.icon-menu {
-    display: none;
-    @media (max-width: $md2+px) {
-        display: block;
-        position: relative;
-        top: 0px;
-        right: 0px;
-        width: 30px;
-        height: 24px;
-        cursor: pointer;
-        z-index: 20;
-        span {
-            transition: all 0.3s ease 0s;
-            top: calc(50% - 1px);
-            left: 0px;
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            background-color: #000;
-            &:first-child {
-                top: 0px;
-            }
-            &:last-child {
-                top: auto;
-                bottom: 0px;
-            }
-        }
-        &._active {
-            span {
-                background-color: $red;
-                transform: scale(0);
-                &:first-child {
-                    transform: rotate(-45deg);
-                    top: calc(50% - 2px);
-                }
-                &:last-child {
-                    transform: rotate(45deg);
-                    bottom: calc(50% - 1px);
-                }
-            }
-        }
+        border-radius: 0 rem(6) rem(6) 0px;
     }
 }
 
 //====================================================================================================
 
-//Burger
-/*
 .icon-menu {
-	display: none;
-	@media (max-width: $mobile) {
-		display: block;
-		position: relative;
-		width: rem(30);
-		height: rem(18);
-		cursor: pointer;
-		z-index: 5;
-    	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-   		-webkit-tap-highlight-color: transparent;
-		span,
-		&::before,
-		&::after {
-			content: "";
-			transition: all 0.3s ease 0s;
-			right: 0;
-			position: absolute;
-			width: 100%;
-			height: rem(2);
-			background-color: #000;
-		}
-		&::before {
-			top: 0;
-		}
-		&::after {
-			bottom: 0;
-		}
-		span {
-			top: calc(50% - rem(1));
-		}
-		.menu-open & {
-			span {
-				width: 0;
-			}
-			&::before,
-			&::after {
-			}
-			&::before {
-				top: calc(50% - rem(1));
-				transform: rotate(-45deg);
-			}
-			&::after {
-				bottom: calc(50% - rem(1));
-				transform: rotate(45deg);
-			}
-		}
-	}
+    display: none;
+    @media (max-width: $tablet) {
+        display: block;
+        position: relative;
+        width: rem(30);
+        height: rem(24);
+        cursor: pointer;
+        z-index: 5;
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        -webkit-tap-highlight-color: transparent;
+        span,
+        &::before,
+        &::after {
+            content: "";
+            transition: all 0.3s ease 0s;
+            right: 0;
+            position: absolute;
+            width: 100%;
+            height: rem(4);
+            background-color: $dark;
+            border-radius: rem(4);
+        }
+        &::before {
+            top: 0;
+        }
+        &::after {
+            bottom: 0;
+        }
+        span {
+            top: calc(50% - rem(2));
+        }
+        @media (any-hover: hover) {
+            &:hover {
+                span,
+                &::before,
+                &::after {
+                    background-color: $darkPurple;
+                }
+            }
+        }
+        .menu-open & {
+            span {
+                width: 0;
+            }
+            &::before {
+                top: calc(50% - rem(2));
+                transform: rotate(-45deg);
+            }
+            &::after {
+                bottom: calc(50% - rem(2));
+                transform: rotate(45deg);
+            }
+        }
+    }
 }
-*/
