@@ -1,0 +1,67 @@
+@font-face {
+	font-family: "icons";
+	font-display: swap;
+	src: url("../fonts/icons.woff") format("woff"), url("../fonts/icons.woff2#icons") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+%ic {
+	font-family: "icons";
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+[class^="_icon-"],
+[class*=" _icon-"] {
+	&:before,
+	&::after {
+		@extend %ic;
+		display: block;
+	}
+}
+
+._icon-spoller::after {
+	content: "\e90c";
+}
+._icon-fb:before {
+	content: "\e90b";
+}
+._icon-support:before {
+	content: "\e900";
+}
+._icon-secure:before {
+	content: "\e901";
+}
+._icon-wifi:before {
+	content: "\e902";
+}
+._icon-cart:before {
+	content: "\e903";
+}
+._icon-protect:before {
+	content: "\e904";
+}
+._icon-tick:before {
+	content: "\e905";
+}
+._icon-tw:before {
+	content: "\e906";
+}
+._icon-bf:before {
+	content: "\e907";
+}
+._icon-inst:before {
+	content: "\e908";
+}
+._icon-search:before {
+	content: "\e909";
+}
+._icon-arrow:before {
+	content: "\e90a";
+}
