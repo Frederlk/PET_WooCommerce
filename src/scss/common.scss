@@ -11,7 +11,7 @@
 %h2 {
     font-family: "Circular";
     font-weight: 700;
-    @include adaptiveValue("font-size", 55, 32);
+    @include adaptiveValue("font-size", 55, 32, 991.98, 767.98, 1);
     line-height: math.div(70, 55);
     text-align: center;
 }
@@ -19,7 +19,7 @@
 %h4 {
     font-family: "Circular";
     font-weight: 700;
-    @include adaptiveValue("font-size", 36, 24);
+    @include adaptiveValue("font-size", 36, 24, 991.98, 767.98, 1);
     line-height: math.div(46, 36);
 }
 

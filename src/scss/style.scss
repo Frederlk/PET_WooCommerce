@@ -145,9 +145,10 @@ body {
     }
     &__simple {
         @include adaptiveValue("padding-top", 65, 60);
+        @include adaptiveValue("padding-bottom", 65, 20);
     }
     &__doc {
-        @include adaptiveValue("padding-top", 165, 60);
+        @include adaptiveValue("padding-top", 100, 60);
         @include adaptiveValue("padding-bottom", 100, 20);
     }
     &__testi {
