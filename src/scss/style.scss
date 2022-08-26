@@ -149,7 +149,7 @@ body {
     }
     &__doc {
         @include adaptiveValue("padding-top", 100, 60);
-        @include adaptiveValue("padding-bottom", 100, 20);
+        @include adaptiveValue("padding-bottom", 100, 60);
     }
     &__testi {
     }

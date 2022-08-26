@@ -12,6 +12,7 @@ function initSliders() {
             autoHeight: false,
             watchOverflow: true,
             adaptiveHeight: true,
+            allowTouchMove: false,
             speed: 800,
             direction: "vertical",
             keyboard: {

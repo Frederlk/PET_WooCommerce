@@ -10,7 +10,8 @@
 
     &__body {
         @media (min-width: $pc) {
-            padding: 0px rem(60);
+            padding-right: rem(60);
+            padding-left: rem(60);
         }
     }
 

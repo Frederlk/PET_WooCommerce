@@ -8,7 +8,7 @@
     @extend %text;
     background-color: $purple;
     color: $white;
-    transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
+    transition: background-color 0.3s ease 0s, border 0.3s ease 0s, color 0.3s ease 0s;
     @media (any-hover: hover) {
         &:hover {
             background-color: $green;
