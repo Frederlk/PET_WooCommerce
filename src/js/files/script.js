@@ -1,8 +1,3 @@
-// Подключение функционала "Чертогов Фрилансера"
-import { isMobile } from "./functions.js";
-// Подключение списка активных модулей
-import { flsModules } from "./modules.js";
-
 window.onload = function () {
     document.addEventListener("click", documentActions);
     // Actions (Делегирование событий Click)

@@ -1,7 +1,3 @@
-// Подключение функционала "Чертогов Фрилансера"
-// Подключение списка активных модулей
-import { flsModules } from "./modules.js";
-
 // Работа с полями формы. Добавление классов, работа с placeholder
 export function formFieldsInit() {
     // Если включено, добавляем функционал "скрыть плейсходлер при фокусе"
@@ -96,7 +92,9 @@ export let formValidate = {
         formRequiredItem.classList.remove("_form-error");
         formRequiredItem.parentElement.classList.remove("_form-error");
         if (formRequiredItem.parentElement.querySelector(".form__error")) {
-            formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector(".form__error"));
+            formRequiredItem.parentElement.removeChild(
+                formRequiredItem.parentElement.querySelector(".form__error")
+            );
         }
     },
     formClean(form) {
